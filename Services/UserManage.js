@@ -1,6 +1,5 @@
 const userDao=require('../Dao/UserDao');
 function Login(account,pwd,callback) {
-    console.log("dologin");
     userDao.QueryByAccount(account).then(result=>{
         if(result.pwd==pwd)
         {
@@ -11,8 +10,5 @@ function Login(account,pwd,callback) {
             callback('000');
         }
     }).catch(err=>{});
-}
-function Query(account) {
-    
 }
 exports.Login=Login;

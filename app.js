@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 
 const logger = require('morgan');
 
-
 const app = express();
 
 // view engine setup
@@ -38,6 +37,12 @@ const usersRouter = require('./routes/users');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //---------此处添加路由---------//
+
+/*//实现post请求的数据打印
+const bodyParser=require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));//解析post请求
+//*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,26 +5,34 @@ const userManage=require('../Services/UserManage');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/Login',function (req,res,next) {
-    let account=req.query.account;
-    let pwd=req.query.pwd;
+
+router.post('/Login',function (req,res,next) {
+    let account=req.body.account;
+    let pwd=req.body.pwd;
     userManage.Login(account,pwd,(err,data)=>{
         if(err)
         {
-          res.json({r:err});
+            res.json({r:err});
             req.session.destroy(err=>{
-              console.log("session destroy fail account:"+account);
+                console.log("session destroy fail account:"+account);
             });
-        }
+    }
         else
         {
-          res.json({r:1,data});
-          req.session.account=account;
-          req.session.uid=data;
-          req.session.pwd=pwd;
+            res.json({r:1,data});
+            req.session.account=account;
+            req.session.uid=data;
         }
     })
-  console.log("user login:"+account);
+    console.log(req.body);
+})
+
+router.get('/Login',function (req,res,next) {
+    console.log("do");
+   res.render('Login');
+})
+router.get('/register',function (req,res,next) {
+
 })
 router.get('/des', function(req, res, next) {
     req.session.destroy();

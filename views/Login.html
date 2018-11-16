@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/md5.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
-<body>
 
+<body>
+<form action="Login" method="post">
+    <div class="form-group">
+        <label for="account">账 号</label>
+        <input type="text" class="form-control" id="account" name="account" placeholder="账 号">
+    </div>
+    <div class="form-group">
+        <label for="pwd">密 码</label>
+        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="密 码">
+    </div>
+
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> 保持登陆
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default" onclick=md5()>确定</button>
+</form>
+<script>
+    function md5() {
+        document.getElementById('pwd').val()
+        var result=hex_md5("123456");
+        alert(result)
+        return result;
+    }
+</script>
 </body>
 </html>
