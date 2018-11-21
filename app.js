@@ -15,7 +15,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(path.join(__dirname, 'views')));
 //---------此处为项目修改内容------//
 const session = require('express-session');
 app.set('views', path.join(__dirname, 'views'));
