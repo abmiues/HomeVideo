@@ -7,10 +7,16 @@ const userManage=require('../Services/UserManage');
 //res.redirect 地址重定向，直接访问一个地址，url变成访问地址
 //res.json 发送json格式数据
 //res.send 发送原始数据
+
+//get 请求用req.query
+//post 用req.body
+//直接路径匹配 定义时需要用/:id,获取id值用req.params。例如127.0.0.1/bangumi/ep1112223,路径定义/bangumi/:id。
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+router.get('/bangumi',function (req,res,next) {
+    res.render('videoList',{title:'动画'})
+})
 router.post('/Login',function (req,res,next) {
     let account=req.body.account;
     let pwd=req.body.pwd;

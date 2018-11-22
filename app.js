@@ -33,8 +33,10 @@ app.use(session({
 //---------此处添加路由---------//
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const videoRouter=require('./routes/video');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/video', videoRouter);
 //---------此处添加路由---------//
 
 /*//实现post请求的数据打印
