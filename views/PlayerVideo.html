@@ -5,10 +5,55 @@
     <title>视频播放</title>
     <% include head.html %>
     <% include pageHead.html %>
+    <link rel="stylesheet" href="/css/playerVideo.css">
 </head>
 <body>
-<!--<video width="320" height="240" controls="controls">
-  <source src="http://localhost:8081/video?name=123" type="video/mp4">
-</video>-->
+<div class="main-content">
+<div class="video-box">
+    <video  class="video-main">
+        <!--<source src="http://localhost:8081/video?name=123" type="video/mp4">-->
+        <source src="http://localhost:3000/[SUBPIG][Gintama TV 01].mp4" type="video/mp4">
+    </video>
+    <div class="control-mask"></div>
+    <div class="video-control">
+        <div class="bar-area" id="bar-area-id" onmousemove="OnSliderMove(event)" >
+            <div class="bar">
+                <div class="buffbar"></div>
+                <div class="playbar"></div>
+            </div>
+        </div>
+
+        <div class="time-flag" id="time-flag-id">00:00</div>
+
+        <div class="btns">
+            <div class="glyphicon glyphicon-play" id="btn-play"></div>
+            <span class="play-time">00:00</span>
+            <span class="play-alltime">/00:00</span>
+            <div class="glyphicon glyphicon-volume-up " id="sound">
+            </div>
+            <div class="glyphicon glyphicon-resize-full" id="fullscreen">
+            </div>
+            <div class="glyphicon glyphicon-cog" id="setting"></div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+/*$('.bar-area').hover(function (a,b) {
+    console.log(a);
+    console.log(b);
+})*/
+var slider=$('.bar-area')[0];
+var flag=$('.time-flag');
+function OnSliderMove (a) {
+    var mousePosX=a.clientX;
+    var rect=slider.getBoundingClientRect();
+    var offsetX=mousePosX-rect.x;
+    var pre=offsetX/slider.offsetWidth;
+    flag.css('left',offsetX-20);
+    flag.text(pre)
+    //flag['left']=offsetX+'px';
+}
+</script>
 </body>
 </html>

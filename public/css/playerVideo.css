@@ -1,0 +1,139 @@
+.main-content{
+    width: 1200px;
+    display: block;
+    margin: 0 auto 0 auto;
+    position: relative;
+}
+.video-main{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: none;
+}
+.video-control
+{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    z-index:4;
+}
+.bar-area{
+    bottom: 36px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-radius: 1px;
+    overflow: hidden;
+    height: 12px;
+}
+.bar{
+    background: hsla(0,0%,100%,.2);
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform: translate(0,-50%)
+}
+.bar-area:hover .bar
+{
+    height:4px;
+}
+.bar-area:hover +.time-flag
+{
+    display: block;
+}
+.buffbar
+{
+    position: absolute;
+    height: 100%;
+    width: 60%;
+    background: hsla(1,0%,100%,.3);
+}
+.playbar
+{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background: #00a1d6;
+}
+.time-flag
+{
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    display: none;
+    color: #fff;
+    background: #000;
+    border-radius: 4px;
+    z-index: 5;
+    top:-40px;
+    line-height: 25px;
+    text-align: center;/*让文字水平居中*/
+}
+.control-mask{
+    pointer-events: none;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-position: bottom;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==) repeat-x bottom;
+    z-index: 3;
+
+   /* opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;*/
+}
+.btns{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+}
+.play-time{
+    color: #fff;
+    position: absolute;
+    font-size: 14px;
+    left: 50px;
+}
+.play-alltime{
+    color: #fff;
+    position: absolute;
+    font-size: 14px;
+    left: 90px;
+}
+.btns div{
+    color: #fff;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+}
+#btn-play{
+   font-size: 24px;
+    left: 10px;
+}
+#sound{
+    font-size: 24px;
+    right: 50px;
+}
+#fullscreen{
+    font-size: 18px;
+    right: 10px;
+    margin: 4px;
+}
+#setting{
+    font-size: 20px;
+    right:90px;
+    margin: 2px;
+}
