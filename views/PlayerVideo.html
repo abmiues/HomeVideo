@@ -10,13 +10,18 @@
 <body>
 <div class="main-content">
 <div class="video-box">
-    <video  class="video-main">
-        <!--<source src="http://localhost:8081/video?name=123" type="video/mp4">-->
-        <source src="http://localhost:3000/[SUBPIG][Gintama TV 01].mp4" type="video/mp4">
+    <div  onclick="play()">
+    <video class="video-main"  preload="auto" >
+            <!--<source src="http://localhost:8081/video?name=123" type="video/mp4">-->
+
+       <!-- <source src="http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4"
+                type="video/mp4">-->
+       <source src="http://localhost:3000/[SUBPIG][Gintama TV 01].mp4" type="video/mp4">
     </video>
+    </div>
     <div class="control-mask"></div>
     <div class="video-control">
-        <div class="bar-area" id="bar-area-id" onmousemove="OnSliderMove(event)" >
+        <div class="bar-area" id="bar-area-id">
             <div class="bar">
                 <div class="buffbar"></div>
                 <div class="playbar"></div>
@@ -26,10 +31,19 @@
         <div class="time-flag" id="time-flag-id">00:00</div>
 
         <div class="btns">
-            <div class="glyphicon glyphicon-play" id="btn-play"></div>
-            <span class="play-time">00:00</span>
+            <div class="glyphicon glyphicon-play" id="btn-play" onclick="play()"></div>
+            <span class="play-time">00:00:00</span>
             <span class="play-alltime">/00:00</span>
             <div class="glyphicon glyphicon-volume-up " id="sound">
+               <!-- <div id="sound-slider-box">
+                    <span>0</span>
+                    <input type="range" min="0" max="100" step="1" value="0" id="sound-slider">
+                </div>-->
+                <div id="sound-slider-box-2">
+                    <span>0</span>
+                    <div class="sound-slider-bar"></div>
+                    <div class="sound-radio"></div>
+                </div>
             </div>
             <div class="glyphicon glyphicon-resize-full" id="fullscreen">
             </div>
@@ -38,22 +52,8 @@
     </div>
 </div>
 </div>
-<script type="text/javascript">
-/*$('.bar-area').hover(function (a,b) {
-    console.log(a);
-    console.log(b);
-})*/
-var slider=$('.bar-area')[0];
-var flag=$('.time-flag');
-function OnSliderMove (a) {
-    var mousePosX=a.clientX;
-    var rect=slider.getBoundingClientRect();
-    var offsetX=mousePosX-rect.x;
-    var pre=offsetX/slider.offsetWidth;
-    flag.css('left',offsetX-20);
-    flag.text(pre)
-    //flag['left']=offsetX+'px';
-}
+<script type="text/javascript" src="/js/videoContral.js">
+
 </script>
 </body>
 </html>
