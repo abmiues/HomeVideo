@@ -1,0 +1,66 @@
+#sound-slider-box-2 div
+{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+#sound-slider-box-2 span
+{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+#sound-slider-box-2
+{
+    display: none;
+    position: absolute;
+    width: 50px;
+    height: 150px;
+    background-color: hsla(0,0%,0%,.4);
+    top: -150px;
+    right: -10px;
+}
+#sound-slider-box-2 span{
+    font-size: 14px;
+    position:  absolute;
+    left: 0;
+    right: 0;
+    top: 10px;
+    text-align: center;
+}
+#sound-slider-bar{
+    display: block;
+    position: absolute;
+    top: 35px;
+    width: 50px;
+    height: 100px;
+    padding:0 23px 0 23px;
+    cursor: pointer;
+}
+#sound-slider-line
+{
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #fff;
+}
+#sound-radio
+{
+    border-radius: 50%;
+    background-color: #2aabd2;
+    display: block;
+    position: absolute;
+    /*top: 26px;*/
+    top: 126px;
+    height: 18px;
+    width: 18px;
+    left: 16px;
+}
