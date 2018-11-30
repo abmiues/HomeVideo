@@ -9,6 +9,7 @@ let textTimeNow=$('.play-time');
 let playBar=$('.playbar');
 let buffbar=$('.buffbar');
 let videoControl=$('.video-control');
+let videoControlPanel=$('.video-control-panel');
 let soundBtn=$('#sound')[0];
 let fullScreenBtns=$('#fullscreen');
 let duration=0;
@@ -22,12 +23,11 @@ videoMain.addEventListener('canplay',function () {
     console.log("canplay")
 })
 videoMain.addEventListener('loadedmetadata',function () {
-    videoControl.css('display:','none');
     playBar.css('width','0%')
     buffbar.css('width','0%')
     soundText.text(videoMain.volume*100);
     duration=videoMain.duration;
-    textTimeAll.text(formatTime(duration))
+    textTimeAll.text('/'+formatTime(duration))
     textTimeNow.text("00:00")
     SetVolume(60)
 })
@@ -56,6 +56,7 @@ let isFullScreen=false;
 let oncePlay=false;
 let mouseInVideoBox=false;//鼠标是否在视频容器内
 let isVideoBoxVisible=true;
+let mouseInControlBox=false;
 let time;
 //只有没点击时执行
 function OnSliderMove(e) {
@@ -169,7 +170,6 @@ function playOrPause() {
     else
     {
         videoMain.play();
-        console.log('play')
         if(!oncePlay)
         {
             time=setTimeout('SetVideoBoxVisible(false)',1000);
@@ -204,23 +204,48 @@ function FullScreenChanged(isFull) {
     }
     else
     {
+        videoControlPanel.css('display','block')
     }
 }
 function OnVideoBoxEnter(e) {
     SetVideoBoxVisible(true);
     mouseInVideoBox=true;
-    console.log('enter video box')
 }
 function OnVideoBoxLeave(e){
     SetVideoBoxVisible(false);
     mouseInVideoBox=false;
 }
+function OnControlBoxEnter(e) {
+    mouseInControlBox=true;
+}
+function OnControlBoxLeave(e) {
+    mouseInControlBox=false;
+}
 function SetVideoBoxVisible(visible){
-    if(!oncePlay)
+    if(!oncePlay||mouseInControlBox)
         return;
     if(isVideoBoxVisible==visible)
         return;
-    isVideoBoxVisible=visible
+    isVideoBoxVisible=visible;
+    if(isFullScreen)
+    {
+        videoControlPanel.css('display',visible?'block':'none')
+    }
+    else
+    {
+        if(visible)
+        {
+            videoControl.css('left','10px')
+            videoControl.css('right','10px')
+            videoControl.css('bottom','0')
+        }
+        else
+        {
+            videoControl.css('left','0')
+            videoControl.css('right','0')
+            videoControl.css('bottom','-41px')
+        }
+    }
     console.log(visible)
 }
 /*
@@ -245,6 +270,8 @@ videoBox.addEventListener("webkitfullscreenchange", function(){FullScreenChanged
 videoBox.addEventListener("msfullscreenchange", function(){FullScreenChanged(document.msFullscreenElement);}, false);
 videoBox.onmouseenter=OnVideoBoxEnter;
 videoBox.onmouseleave=OnVideoBoxLeave;
+videoControl[0].onmouseenter=OnControlBoxEnter;
+videoControl[0].onmouseleave=OnControlBoxLeave;
 //-------音频相关--------//
 let soundSliderBox=$('#sound-slider-box-2');
 let soundSliderBar=$('#sound-slider-bar')[0];

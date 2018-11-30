@@ -63,15 +63,15 @@ ul{
     height: 100%;
 }
 .nav-area{
-    padding: 0;
+    padding: 10px 0 0 0;
     margin: 0;
     background: #fff;
     z-index: 1;
     box-shadow: 0px 2px 3px 0px rgba(0,0,0,.15);
-    height: 35px;
+    height: 45px;
 }
 .nav-area .wapper {
-    margin: 10px auto auto;
+    margin:0px auto auto;
     width: 1200px;
 }
 .nav-area ul {

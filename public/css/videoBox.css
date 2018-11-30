@@ -18,6 +18,16 @@
     width: 100%;
     display: table;
     position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.video-control-panel{
+    display:block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .video-title{
     font-size: 20px;
@@ -215,4 +225,13 @@
     font-size: 20px;
     right:90px;
     margin: 2px;
+}
+#btn-next{
+    margin-left: 50px;
+    display: inline;
+}
+#btn-next div{
+    font-size: 20px;
+    color: white;
+    line-height: 25px;
 }
