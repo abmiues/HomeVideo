@@ -1,0 +1,75 @@
+#header{
+    position: relative;
+    z-index: 999;
+    background: url(/img/title.jpg) no-repeat center ;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    display: block;
+}
+#page_top{
+    position: relative;
+    width: 100%;
+    height: 42px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+#page_top .bg
+{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background-size: cover;
+    background: url(/img/title.jpg) no-repeat top;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+#page_top .mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+}
+#page_top .bg-wrap{
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.nav-area{
+    padding: 10px 0 0 0;
+    margin: 0;
+    background: #fff;
+    z-index: 1;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,.15);
+    height: 45px;
+}
+.nav-area .wapper {
+    margin:0px auto auto;
+    width: 1200px;
+}
+.nav-area ul {
+    list-style: none;
+}
+.nav-area li{
+    position: relative;
+    float: left;
+    width: 100px;
+    height: auto;
+    margin-left: -1px;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    list-style: none;}
+.nav-area a{
+    position: relative;
+    width: 100%;
+    height: 24px;
+    text-align: center;
+    border-left: 1px solid #ccc;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}

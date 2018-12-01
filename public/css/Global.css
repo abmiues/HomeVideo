@@ -1,0 +1,23 @@
+body{
+                           font-size: 12px;
+                       }
+div {
+    display: block;
+    color: #585858;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+p{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+}
