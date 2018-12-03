@@ -17,59 +17,310 @@
             <span >2017-05-06</span>
         </div>
     </div>
-<div class="video-box" id="video-box-id">
-    <div class="video-main" onclick="playOrPause()" style="z-index: 1">
-        <video   preload="auto" >
+    <div class="video-box" id="video-box-id">
+        <div class="video-main" onclick="playOrPause()" style="z-index: 1">
+            <video   preload="auto" >
                 <!--<source src="http://localhost:8081/video?name=123" type="video/mp4">-->
-           <source src="http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4"
-                    type="video/mp4">
-           <!--<source src="http://localhost:3000/[SUBPIG][Gintama TV 01].mp4" type="video/mp4">-->
-        </video>
-    </div>
-    <div class="video-control-panel">
-        <div class="video-title">
-            测试视频
+                <source src="http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4"
+                        type="video/mp4">
+                <!--<source src="http://localhost:3000/[SUBPIG][Gintama TV 01].mp4" type="video/mp4">-->
+            </video>
         </div>
-        <div class="control-mask"></div>
-        <div class="video-control">
-            <div class="bar-area" id="bar-area-id">
-                <div class="bar">
-                    <div class="buffbar"></div>
-                    <div class="playbar"></div>
-                </div>
+        <div class="video-control-panel">
+            <div class="video-title">
+                测试视频
             </div>
+            <div class="control-mask"></div>
+            <div class="video-control">
+                <div class="bar-area" id="bar-area-id">
+                    <div class="bar">
+                        <div class="buffbar"></div>
+                        <div class="playbar"></div>
+                    </div>
+                </div>
 
-            <div class="time-flag" id="time-flag-id">00:00</div>
+                <div class="time-flag" id="time-flag-id">00:00</div>
 
-            <div class="btns">
-                <div class="glyphicon glyphicon-play" id="btn-play" onclick="playOrPause()"></div>
-                <span id="btn-next">
+                <div class="btns">
+                    <div class="glyphicon glyphicon-play" id="btn-play" onclick="playOrPause()"></div>
+                    <span id="btn-next">
                     <div class="glyphicon glyphicon-step-forward" ></div>
                 </span>
-                <span class="play-time">00:00:00</span>
-                <span class="play-alltime">/00:00</span>
-                <div class="glyphicon glyphicon-volume-up " id="sound">
-                    <div id="sound-slider-box-2">
-                        <span>0</span>
-                        <div id="sound-slider-bar">
-                            <div id="sound-slider-line" style="pointer-events: none;"></div>
+                    <span class="play-time">00:00:00</span>
+                    <span class="play-alltime">/00:00</span>
+                    <div class="glyphicon glyphicon-volume-up " id="sound">
+                        <div id="sound-slider-box-2">
+                            <span>0</span>
+                            <div id="sound-slider-bar">
+                                <div id="sound-slider-line" style="pointer-events: none;"></div>
+                            </div>
+                            <div id="sound-radio" style="pointer-events: none;"></div>
                         </div>
-                        <div id="sound-radio" style="pointer-events: none;"></div>
-                    </div>
 
+                    </div>
+                    <div class="glyphicon glyphicon-resize-full" id="fullscreen">
+                    </div>
+                    <div class="glyphicon glyphicon-cog" id="setting"></div>
                 </div>
-                <div class="glyphicon glyphicon-resize-full" id="fullscreen">
-                </div>
-                <div class="glyphicon glyphicon-cog" id="setting"></div>
             </div>
         </div>
     </div>
-</div>
-<div class="listContent">
 
+    <div class="groupContent">
+        <img src="/img/1.jpg">
+        <div class="listContent">
+            <div class="season-list">
+                <ul>
+                    <li class="on">第一季</li>
+                    <li>第二季</li>
+                </ul>
+                <div style="display: flex;justify-content:center;width: 100px">
+                    <div style="width: 2px;background-color: #e5e9f0;border: none;height: 20px"></div>
+                    <div class="glyphicon glyphicon-th-list" id="btnShowList" style="font-size:16px;margin-left: 15px;cursor: pointer"></div>
+                    <div class="glyphicon glyphicon-th-large  on" id="btnShowBlock" style="font-size:16px;margin-left: 20px;cursor: pointer"></div>
+                </div>
+            </div>
+            <div class="video-list ">
+                <ul class="" id="simple-list">
+                    <li class="on">
+                        <h4 class="bm-index">第1话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第2话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第3话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第4话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第5话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第6话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第7话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                    <li>
+                        <h4 class="bm-index">第8话</h4>
+                        <p class="bm-title">测试标题</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </div>
-</div>
+
 <script type="text/javascript" src="/js/videoContral.js">
+
+</script>
+<script type="text/javascript" src="/js/seasonList.js">
 
 </script>
 </body>

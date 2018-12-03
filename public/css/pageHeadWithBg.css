@@ -38,12 +38,12 @@
     height: 100%;
 }
 .nav-area{
-    padding: 10px 0 0 0;
+    padding: 7px 0 0 0;
     margin: 0;
     background: #fff;
     z-index: 1;
     box-shadow: 0px 2px 3px 0px rgba(0,0,0,.15);
-    height: 45px;
+    height:35px;
 }
 .nav-area .wapper {
     margin:0px auto auto;
@@ -51,6 +51,7 @@
 }
 .nav-area ul {
     list-style: none;
+    position: relative;
 }
 .nav-area li{
     position: relative;
@@ -65,11 +66,21 @@
 .nav-area a{
     position: relative;
     width: 100%;
-    height: 24px;
+    height: 16px;
     text-align: center;
-    border-left: 1px solid #ccc;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     display: block;
     color: #333;
+}
+.nav-area a:hover{
+    color: red;
+}
+.nav-area .nav-move{
+    height: 4px;
+    width: 100px;
+    background-color: red;
+    position: absolute;
+    top: 25px;
+    left: 100px;
 }
