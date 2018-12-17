@@ -10,8 +10,8 @@ btnShowBlock[0].onclick=function (e) {
     btnShowList.attr('class','glyphicon glyphicon-th-list')
     simpleList.attr('class','')
     inSimpleMode=false
-    sliderRightBtn.css('display',currentTime==clickTimes?'none':'block')
-    sliderLeftBtn.css('display',currentTime==0?'none':'block')
+    sliderRightBtn.css('display','block')
+    sliderLeftBtn.css('display','block')
     simpleList.css('transform','translateX('+(-currentTime*onClickRate)+"px)")
 }
 btnShowList[0].onclick=function (e) {
@@ -24,8 +24,8 @@ btnShowList[0].onclick=function (e) {
     simpleList.css('transform','translateX('+0+"px)")
 }
 
-let sliderWidth=videoItem.length*128-1050;
-let clickTimes=Math.floor(sliderWidth/1040+0.5);//四舍五入决定点击次数;
+let sliderWidth=videoItem.length*128-1220;
+let clickTimes=Math.floor(sliderWidth/1210+0.5);//四舍五入决定点击次数;
 let onClickRate=sliderWidth/clickTimes;//每次点击步幅
 let currentTime=0;
 sliderRightBtn[0].onclick=function (e) {

@@ -13,11 +13,17 @@ const fs=require('fs');
         console.log("video send finish");
     })
 })*/
-router.get('/:id', function(req, res, next) {
+/*router.get('/:id', function(req, res, next) {
     let big=req.params.big;
     res.send(big);
-});
+});*/
 router.get('/',function (req,res,next) {
-    res.render('PlayerVideo')
+    res.render('PlayVideo')
+})
+router.get('/bangumi',function (req,rsp,next) {
+    rsp.render('PlayBangumi');
+})
+router.get('/bangumi/:id',function (req,rsp,next) {
+    //rsp.render('PlayBangumi');
 })
 module.exports=router;
