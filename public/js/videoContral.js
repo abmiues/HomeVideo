@@ -36,7 +36,6 @@ videoMain.addEventListener('loadeddata',function (data) {
 })
 videoMain.addEventListener('progress',function () {
     let buffer=videoMain.buffered;
-    console.log(buffer)
     let length=buffer.length;
     if(length>0)
     {

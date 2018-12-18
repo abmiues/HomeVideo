@@ -41,6 +41,14 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
+.groupContent img{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
 .season-list
 {
     border-bottom: 1px solid #e5e9f0;
@@ -121,7 +129,7 @@
     white-space: initial;
 }
 .video-list .simple li {
-    width: 66px;
+    width: 64px;
     height: 28px;
     padding: 0;
     margin-bottom: 10px;

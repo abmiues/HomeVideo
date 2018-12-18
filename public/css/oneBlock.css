@@ -81,9 +81,11 @@
 }
 .info p{
     background: #ffffff;
-    position:relative;
+    position:absolute;
     z-index: 2;
     margin-top: 0px;
+    top: 252px;
+    width: 100%;
     transition: margin-top .1s ease-in;
     color: #99a2aa;
 }

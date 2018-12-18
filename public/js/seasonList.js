@@ -10,9 +10,7 @@ btnShowBlock[0].onclick=function (e) {
     btnShowList.attr('class','glyphicon glyphicon-th-list')
     simpleList.attr('class','')
     inSimpleMode=false
-    sliderRightBtn.css('display',currentTime==clickTimes?'none':'block')
-    sliderLeftBtn.css('display',currentTime==0?'none':'block')
-    simpleList.css('transform','translateX('+(-currentTime*onClickRate)+"px)")
+    SetSlider();
 }
 btnShowList[0].onclick=function (e) {
     btnShowBlock.attr('class','glyphicon glyphicon-th-large');
@@ -24,49 +22,71 @@ btnShowList[0].onclick=function (e) {
     simpleList.css('transform','translateX('+0+"px)")
 }
 
-let sliderWidth=videoItem.length*128-1050;
-let clickTimes=Math.floor(sliderWidth/1040+0.5);//四舍五入决定点击次数;
-let onClickRate=sliderWidth/clickTimes;//每次点击步幅
-let currentTime=0;
-sliderRightBtn[0].onclick=function (e) {
-    currentTime++;
-    currentTime=Math.min(currentTime,clickTimes);
-    if(currentTime>clickTimes)
+let currentVideoIndex=0;
+let sliderShowWidth=1050;
+let currentPos=0;
+let sliderWidth=videoItem.length*128-sliderShowWidth;
+Init();
+function Init() {
+    currentVideoIndex=0;
+    onListItemClick(currentVideoIndex);
+    let parent=simpleList[0];
+    let count=simpleList[0].childElementCount;
+    for (let i=0;i<count;i++)
     {
-        currentTime=clickTimes;
+
+        let child= parent.children[i];
+        let index=i;
+        child.onclick=function (e){onListItemClick(index);}
     }
-    else if(currentTime==clickTimes)
+    SetSlider();
+}
+sliderRightBtn[0].onclick=function (e) {
+    let offset=sliderWidth-currentPos;
+    if(offset==0)
     {
-        sliderRightBtn.css('display','none')
-        ResetSliderBtn();
+        currentPos=sliderWidth;
     }
     else
     {
-        ResetSliderBtn();
+        currentPos+=(offset/(offset/sliderShowWidth)-25);
     }
+    SetSlider()
+    if(currentPos>=sliderWidth)
+        sliderRightBtn.css('display','none');
     sliderLeftBtn.css('display','block')
 }
 sliderLeftBtn[0].onclick=function (e) {
-    currentTime--;
-    if(currentTime<0)
+    let times=currentPos/sliderShowWidth;
+    if(times==0)
     {
-        currentTime=0;
-    }
-    else if(currentTime==0)
-    {
-        sliderLeftBtn.css('display','none')
-        ResetSliderBtn();
+        currentPos=0;
     }
     else
     {
-        ResetSliderBtn();
+        currentPos-=(currentPos/times-25)
     }
-    sliderRightBtn.css('display','block')
+    SetSlider()
+    if(currentPos==0)
+        sliderLeftBtn.css('display','none');
+    sliderRightBtn.css('display','block');
 }
 
-
-function ResetSliderBtn() {
+function onListItemClick(index) {
+    currentPos=128*index;
+    let parent=simpleList[0];
+    if(currentVideoIndex<parent.childElementCount){
+        parent.children[currentVideoIndex].setAttribute('class','')
+        currentVideoIndex=index;
+        parent.children[currentVideoIndex].setAttribute('class','on')
+        SetSlider();
+    }
+}
+function SetSlider() {
     if(inSimpleMode)
         return;
-    simpleList.css('transform','translateX('+(-currentTime*onClickRate)+"px)")
+    currentPos=Math.max(Math.min(sliderWidth,currentPos),0);
+    simpleList.css('transform','translateX('+(-currentPos)+"px)")
+    sliderRightBtn.css('display',currentPos==sliderWidth?'none':'block')
+    sliderLeftBtn.css('display',currentPos==0?'none':'block')
 }
