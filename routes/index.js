@@ -59,4 +59,7 @@ router.get('/des', function(req, res, next) {
     req.session.destroy();
     res.send('des');
 });
+router.get('/search',function (req,rsp,next) {
+    rsp.render('searchResult')
+})
 module.exports = router;

@@ -1,39 +1,41 @@
-/*播放页面的css*/
-.main-content{
-    width: 1200px;
-    display: table;
-    margin: 10px auto 0 auto;
-    position: relative;
+.bangumi-list{
+    padding-right: 24px;
+    padding-left:24px ;
+    margin-top: 10px;
 }
-.title-info
-{
-    padding-left: 20px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB1klEQVQ4T2NkoBAwgvSbLfwvzP7/j8H//wx/cZn3n/Ev31Eu9q1FfH+TNt1iXnQnj/EnSC3YAOsFP8OOJrCvwucYs9n/FZWE/h5LMWSWOPLw78Mb7//1rQhimwQ2wHber5TDSWxz8BkQsP63s5880+5Hn/8zKgkyMdz/8G9vvR2LC9yAf4yMNxkZGJixGcKiwHLE+NefvUFaLHYg+aefGRjW3fxXuyKQuYUoF0Sv+5UarsM6VZiTgRVkwO57f0802LNYwsMArxdW/WeuE/l3yl2VyQik4c13hr/b7vyNmOnFsgZugNXcX6nMTP8l/qN64f+Lz2wdNgp/CmJ1WTo4WCCe23zzz9UOF1YdmFcJeiFp0+/+ZEOWApCGBx/+/99443fTqlD2BqINiFz7uzjZkKXn2ut/7x9/+Mdy/9O/zDWh7EsxDECPhX9//705lsJ+xXnpb0chVoa8t79ZCszF/x68/f5vNVYDCKUDkI2Ve/48wGqAzYJf2UcS2KbiS0jOy/6LO0j/vXjx1d9iDBeYz//tKsPNUCbGA4lnbICPjUFMV4xZYvENRrOdYYx3UMIAxMnZ9ttahJsxlY8NHDEY4P9/hj+3Pv5fN9OTZRuyJHbV+PyCJgcApGLPERB/x3YAAAAASUVORK5CYII=) no-repeat;
+.bangumi-list em{
+    font-style: normal;
+    padding-right: 5px;
 }
-.introduce-content
-{
-    margin-top: 20px;
-    width: 100%;
+.bangumi-list li{
+    display: flex;
+    align-items: flex-start;
+    justify-content:left;
+    margin-top: 30px;
 }
-.introduce-content span{
+.bangumi-list ul{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e9f0;
+}
+.bangumi-list li div{
+    margin-left: 20px;
+}
+.bangumi-list li img {
+    width: 170px;
+}
+.bangumi-list .title{
+    margin-top: 10px;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
-.description{
-    margin-top: 5px;
-    border-top: 2px solid #e5e9f0;
-    padding-top: 10px;
-    font-size: 14px;
+.bangumi-list p{
     line-height: 26px;
-    color: #585858;
-    padding-bottom: 10px;
+    font-size: 14px;
 }
 .groupContent{
     margin: auto;
-    width: 1248px;
-}
-.listContent
-{
+    width: 1040px;
 }
 .otherVideo{
     margin-left: 24px;
@@ -43,7 +45,7 @@
     border-bottom: 2px solid #e5e9f0;;
     padding-bottom: 5px;
 }
-.listContent div{
+.video-list div{
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Chrome/Safari/Opera */
     -khtml-user-select: none; /* Konqueror */
@@ -64,8 +66,7 @@
     left:0px;
 }
 /*定义单个视频容器*/
-.video-list .item
-{
+.video-list .item {
     position: relative;
     float: left;
     width: 160px;
@@ -107,4 +108,40 @@
     top: 118px;
     transition: margin-top .1s ease-in;
     color: #99a2aa;
+}
+.page-list {
+    width: 1040px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0 auto 30px auto;
+}
+.page-list span{
+    font-size: 16px;
+    height: 100%;
+    margin:0 10px 0 30px;
+}
+.page-list a{
+    font-size: 14px;
+    padding: 10px 14px 10px 15px;
+    border-radius: 4px;
+    border-color: #acacac;
+    border-style:solid;
+    border-width: 1px;
+    margin: 0 3px;
+    box-shadow: 1px 1px 2px #8c8c8c;
+    text-decoration: none;
+}
+.page-list a:hover{
+    color: #fff;
+    background-color: #2aabd2;
+}
+.page-list .jumpInput {
+    font-size: 16px;
+    border-width: 1px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px #8c8c8c;
+    width: 60px;
+    padding: 5px 2px 5px 2px;
+    text-align: center;
 }

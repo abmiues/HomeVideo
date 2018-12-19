@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>视频播放</title>
+    <% include head.html %>
+    <% include pageHead.html %>
+    <link rel="stylesheet" href="/css/searchResult.css">
+</head>
+<body>
+<div class="main-content">
+
+</div>
+<div class="groupContent">
+
+    <div class="bangumi-list">
+        <ul >
+            <li >
+                <img src="/img/1.jpg">
+                <div>
+                    <p class="title">测试番剧</p>
+                    <p ><em>主 演:</em> xxxxxx</p>
+                    <p><em>类 型:</em>xxxxxx</p>
+                    <p><em>地 区:</em>冰岛</p>
+                    <p><em>上 映:</em>2017-10-10</p>
+                    <p><em>剧情简介:</em>xxxxxxxxxxxx</p>
+                </div>
+            </li>
+            <li >
+                <img src="/img/1.jpg">
+                <div>
+                    <p class="title">测试番剧</p>
+                    <p ><em>主 演:</em> xxxxxx</p>
+                    <p><em>类 型:</em>xxxxxx</p>
+                    <p><em>地 区:</em>冰岛</p>
+                    <p><em>上 映:</em>2017-10-10</p>
+                    <p><em>剧情简介:</em>xxxxxxxxxxxx</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+     <div class="video-list ">
+            <ul class="" id="simple-list">
+                <% for(i=0;i<20;i++)
+                {%>
+                <li class="item">
+                    <a href="#">
+                        <img src="/img/lazy_img.jpg" alt="测试" class="cover">
+                    </a>
+                    <div class="info">
+                        <a href="">末日有没有空，可以来拯救吗</a>
+                        <p>
+                            <span> 2017-10-10</span>
+                            <span style="position:absolute;right:5px;">00:00:00</span>
+                        </p>
+                    </div>
+                </li>
+                <% }%>
+            </ul>
+        </div>
+
+</div>
+<div class="page-list">
+    <a class="prev-page">
+        上一页
+    </a>
+    <a>
+        1
+    </a>
+    <a>
+        2
+    </a>
+    <a>
+        3
+    </a>
+    <a>
+        4
+    </a>
+    <a class="next-page">
+        下一页
+    </a>
+    <span>总页数：10/200 跳页</span>
+    <input class="jumpInput">
+
+    </input>
+</div>
+</body>
+</html>

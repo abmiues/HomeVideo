@@ -5,6 +5,12 @@ let sliderRightBtn=$('.slider-right-btn');
 let sliderLeftBtn=$('.slider-left-btn');
 let videoItem=$('#simple-list li')
 let inSimpleMode=false;
+window.addEventListener('popstate', function(e){
+    if (history.state){
+       /* console.log("location: " + document.location + ", state: " + JSON.stringify(state));*/
+        OnItemClick(e.state.pageIndex)
+    }
+}, false);
 btnShowBlock[0].onclick=function (e) {
     btnShowBlock.attr('class','glyphicon glyphicon-th-large on');
     btnShowList.attr('class','glyphicon glyphicon-th-list')
@@ -26,9 +32,11 @@ let currentVideoIndex=0;
 let sliderShowWidth=1050;
 let currentPos=0;
 let sliderWidth=videoItem.length*128-sliderShowWidth;
+let url="";
 Init();
 function Init() {
     currentVideoIndex=0;
+    url=window.location.pathname;
     onListItemClick(currentVideoIndex);
     let parent=simpleList[0];
     let count=simpleList[0].childElementCount;
@@ -72,7 +80,21 @@ sliderLeftBtn[0].onclick=function (e) {
     sliderRightBtn.css('display','block');
 }
 
+/*
+剧集点击，并保存历史修改url,实现无刷新修改播放器
+ */
 function onListItemClick(index) {
+    window.history.pushState(
+        {pageIndex:index,keywords:'测试地址'},
+        document.title,
+        url+"/"+index
+    );
+    OnItemClick(index);
+}
+/*
+实际剧集点击效果
+ */
+function OnItemClick(index) {
     currentPos=128*index;
     let parent=simpleList[0];
     if(currentVideoIndex<parent.childElementCount){
