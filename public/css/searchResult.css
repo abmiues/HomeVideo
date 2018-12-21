@@ -1,3 +1,31 @@
+.search-form{
+    display: none;
+}
+.search-content{
+    width: 1040px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-content input{
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 0px 15px;
+    height: 44px;
+    width: 300px;
+    border:2px solid #ccd0d7;
+}
+.search-content button{
+    margin-left: 10px;
+    height: 42px;
+    background-color: #2aabd2;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    width: 80px;
+    font-size: 16px;
+}
 .bangumi-list{
     padding-right: 24px;
     padding-left:24px ;
