@@ -12,8 +12,7 @@ function QueryByAccount(account) {
 function QueryByUid(uid) {
     return new Promise((resolve, reject) =>{
         db.query("select * from users where uid=?",[uid],(err,data)=>{
-            if(err)
-                reject(err);
+            if(err) reject(err);
             else resolve(data);
         })
     } )

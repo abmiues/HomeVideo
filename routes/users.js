@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userManage=require('../Services/UserManage');
-
+const UserModel=require('../model/UserModel');
 router.post('/Login',function (req,res,next) {
     let account=req.body.account;
     let pwd=req.body.pwd;
@@ -38,25 +38,27 @@ router.get('/Login',function (req,res,next) {
 router.get('/register',function (req,res,next) {
     res.render('register',{err:null});
 })
+
+
 router.post('/register',function (req,res,next) {
-    let account=req.body.account;
-    let pwd=req.body.pwd;
-    let name=req.body.name;
+
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth()+1;
     var day = date.getDate();
     var hour = date.getHours();
     var minute = date.getMinutes();
-    let time=year+"-"+month+"-"+day+" "+hour+"-"+minute;
-    let icon="";
-    userManage.Register({account:account,pwd:pwd,name:name,time:time,icon:icon},(err,data)=>{
+    let userModel=new UserModel;
+    userModel.time=year+"-"+month+"-"+day+" "+hour+"-"+minute;
+    userModel.icon="";
+    userModel.account=req.body.account;
+    userModel.pwd=req.body.pwd;
+    userModel.name=req.body.name;
+    userManage.Register(userModel,(err,data)=>{
       if(err)
         res.render('register',{err:err});
       else
           res.redirect('Login');
     })
 })
-
-
 module.exports = router;

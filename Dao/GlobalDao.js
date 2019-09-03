@@ -3,4 +3,9 @@ function SendError(error) {
         reject(error)
     })
 }
+
+/**
+ * 用于Promise嵌套情况时，跳出Promise
+ * @type {function(*=): Promise<any>}
+ */
 exports.SendError=SendError;
