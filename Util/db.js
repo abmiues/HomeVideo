@@ -18,7 +18,7 @@ function insert(sql,params,callback)
 {
     pool.getConnection(function (err,connection) {
         connection.query(sql,params,function (err,results,fields) {
-            callback(err,results.insertId);
+            callback(err,results);
             connection.release();
         });
     });

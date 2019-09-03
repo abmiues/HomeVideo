@@ -1,3 +1,4 @@
+/*播放器的css*/
 .video-box div {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -20,6 +21,7 @@
     position: relative;
     overflow: hidden;
     margin-top: 10px;
+    box-shadow: 2px 2px 3px #8c8c8c;
 }
 .video-control-panel{
     display:block;
@@ -50,7 +52,6 @@
 .video-main{
     position: relative;
     display: block;
-    box-shadow: 2px 2px 3px #8c8c8c;
     height: 100%;
 }
 .video-main video{

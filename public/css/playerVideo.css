@@ -1,3 +1,4 @@
+/*播放页面的css*/
 .main-content{
     width: 1200px;
     display: table;
@@ -8,4 +9,102 @@
 {
     padding-left: 20px;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB1klEQVQ4T2NkoBAwgvSbLfwvzP7/j8H//wx/cZn3n/Ev31Eu9q1FfH+TNt1iXnQnj/EnSC3YAOsFP8OOJrCvwucYs9n/FZWE/h5LMWSWOPLw78Mb7//1rQhimwQ2wHber5TDSWxz8BkQsP63s5880+5Hn/8zKgkyMdz/8G9vvR2LC9yAf4yMNxkZGJixGcKiwHLE+NefvUFaLHYg+aefGRjW3fxXuyKQuYUoF0Sv+5UarsM6VZiTgRVkwO57f0802LNYwsMArxdW/WeuE/l3yl2VyQik4c13hr/b7vyNmOnFsgZugNXcX6nMTP8l/qN64f+Lz2wdNgp/CmJ1WTo4WCCe23zzz9UOF1YdmFcJeiFp0+/+ZEOWApCGBx/+/99443fTqlD2BqINiFz7uzjZkKXn2ut/7x9/+Mdy/9O/zDWh7EsxDECPhX9//705lsJ+xXnpb0chVoa8t79ZCszF/x68/f5vNVYDCKUDkI2Ve/48wGqAzYJf2UcS2KbiS0jOy/6LO0j/vXjx1d9iDBeYz//tKsPNUCbGA4lnbICPjUFMV4xZYvENRrOdYYx3UMIAxMnZ9ttahJsxlY8NHDEY4P9/hj+3Pv5fN9OTZRuyJHbV+PyCJgcApGLPERB/x3YAAAAASUVORK5CYII=) no-repeat;
+}
+.introduce-content
+{
+    margin-top: 20px;
+    width: 100%;
+}
+.introduce-content span{
+    font-size: 20px;
+    font-weight: bold;
+}
+.description{
+    margin-top: 5px;
+    border-top: 2px solid #e5e9f0;
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #585858;
+    padding-bottom: 10px;
+}
+.groupContent{
+    margin: auto;
+    width: 1248px;
+}
+.listContent
+{
+}
+.otherVideo{
+    margin-left: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 1200px;
+    border-bottom: 2px solid #e5e9f0;;
+    padding-bottom: 5px;
+}
+.listContent div{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+.glyphicon{
+    color: #99a2aa;
+}
+.video-list {
+    margin-top: 14px;
+    position: relative;
+}
+.video-list ul {
+    position: relative;
+    transition: all .2s ease-in-out;
+    left:0px;
+}
+/*定义单个视频容器*/
+.video-list .item
+{
+    position: relative;
+    float: left;
+    width: 160px;
+    height: 134px;
+    margin: 0px 24px 20px 24px;
+    padding: 0;
+    font-size: 100%;
+    list-style: none;
+    overflow: hidden;
+}
+.video-list .item:hover .info p{
+    margin-top: 14px;
+    transition: margin-top .1s ease-in;
+}
+
+/*定义每个视频图片尺寸*/
+.video-list .cover {
+    height: 100px;
+    width: 100%;
+}
+.info{
+    padding:0 3px 0 3px;
+}
+/*定义每个视频下方名字*/
+.info a {
+    text-decoration: none;
+    position:relative;
+    overflow: hidden;
+    z-index: 1;
+    line-height: 12px;
+    font-size: 100%;
+}
+.info p{
+    background: #ffffff;
+    position:absolute;
+    z-index: 2;
+    margin-top: 0px;
+    width: 100%;
+    top: 118px;
+    transition: margin-top .1s ease-in;
+    color: #99a2aa;
 }

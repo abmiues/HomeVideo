@@ -18,5 +18,17 @@ function QueryByUid(uid) {
         })
     } )
 }
+function InsertUser(userInfo)
+{
+    return new Promise((resolve, reject) =>{
+        db.insert("insert into users (account,pwd,name,time,icon) values(?,?,?,?,?)",
+            [userInfo.account,userInfo.pwd,userInfo.name,userInfo.time,userInfo.icon],
+            (err,data)=>{
+            if(err) reject(err);
+            else resolve(data);
+        })
+    } )
+}
 exports.QueryByUid=QueryByUid;
 exports.QueryByAccount=QueryByAccount;
+exports.InsertUser=InsertUser;

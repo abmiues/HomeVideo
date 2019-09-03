@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const userManage=require('../Services/UserManage');
 /* GET home page. */
 
 //res.render 加载一个html，传入参数，不改变url地址
@@ -17,46 +16,11 @@ router.get('/', function(req, res, next) {
 router.get('/bangumi',function (req,res,next) {
     res.render('videoList',{title:'动画'})
 })
-router.post('/Login',function (req,res,next) {
-    let account=req.body.account;
-    let pwd=req.body.pwd;
-    let keepLogin=req.body.keepLogin;
-    userManage.Login(account,pwd,(err,data)=>{
-        if(err)
-        {
-           // res.json({r:err});
-            req.session.destroy(err=>{
-                console.log("session destroy succeed account:"+account);
-            });
-            res.render('Login',{err:0});
-        }
-        else
-        {
-            if(keepLogin)
-            {
-                console.log(keepLogin);
-                req.session.account=account;
-                req.session.uid=data;
-            }
-            res.redirect('/');
-        }
-    })
-    console.log(req.body);
-})
-
-router.get('/Login',function (req,res,next) {
-    if(req.session.uid)
-    {
-        res.redirect('/');
-    }
-    else
-    res.render('Login',{err:1});
-})
-router.get('/register',function (req,res,next) {
-
-})
 router.get('/des', function(req, res, next) {
     req.session.destroy();
     res.send('des');
 });
+router.get('/search',function (req,rsp,next) {
+    rsp.render('searchResult')
+})
 module.exports = router;

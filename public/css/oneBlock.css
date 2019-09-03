@@ -50,10 +50,7 @@
     list-style: none;
     overflow: hidden;
 }
-.one-block .item:hover .info p{
-    margin-top: 12px;
-    transition: margin-top .1s ease-in;
-}
+
 /*定义每个视频图片容器的边距和外发光*/
 .one-block .thumbnail
 {
@@ -81,9 +78,15 @@
 }
 .info p{
     background: #ffffff;
-    position:relative;
+    position:absolute;
     z-index: 2;
     margin-top: 0px;
-    transition: margin-top .1s ease-in;
+    top: 252px;
+    width: 100%;
+    transition: margin-top .1s ease-in;/*鼠标离开后的回弹动画*/
     color: #99a2aa;
+}
+.one-block .item:hover .info p{
+    margin-top: 12px;
+    transition: margin-top .1s ease-in;/*鼠标进入后的展开动画*/
 }
