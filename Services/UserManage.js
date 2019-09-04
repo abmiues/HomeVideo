@@ -1,6 +1,5 @@
 const userDao=require('../Dao/UserDao');
 const globalDao=require('../Dao/GlobalDao');
-const UserModel=require('../model/UserModel');
 function Login(account,pwd,callback) {
     userDao.QueryByAccount(account)
         .then((result)=>{

@@ -24,7 +24,7 @@ function InsertUser(userInfo)
             [userInfo.account,userInfo.pwd,userInfo.name,userInfo.time,userInfo.icon],
             (err,data)=>{
             if(err) reject(err);
-            else resolve(data);
+            else resolve(data.insertId);
         })
     } )
 }

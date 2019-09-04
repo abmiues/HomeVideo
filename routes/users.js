@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userManage=require('../Services/UserManage');
-const UserModel=require('../model/UserModel');
+const UsersModel=require('../model/UsersModel');
 router.post('/Login',function (req,res,next) {
     let account=req.body.account;
     let pwd=req.body.pwd;
@@ -48,17 +48,19 @@ router.post('/register',function (req,res,next) {
     var day = date.getDate();
     var hour = date.getHours();
     var minute = date.getMinutes();
-    let userModel=new UserModel;
-    userModel.time=year+"-"+month+"-"+day+" "+hour+"-"+minute;
-    userModel.icon="";
-    userModel.account=req.body.account;
-    userModel.pwd=req.body.pwd;
-    userModel.name=req.body.name;
-    userManage.Register(userModel,(err,data)=>{
+    let usersModel=new UsersModel;
+    usersModel.time=year+"-"+month+"-"+day+" "+hour+":"+minute;
+    usersModel.icon="";
+    usersModel.account=req.body.account;
+    usersModel.pwd=req.body.pwd;
+    usersModel.name=req.body.name;
+    userManage.Register(usersModel,(err,data)=>{
       if(err)
         res.render('register',{err:err});
-      else
-          res.redirect('Login');
+      else{
+          console.log(data);
+          res.redirect('Login')
+      };
     })
 })
 module.exports = router;
