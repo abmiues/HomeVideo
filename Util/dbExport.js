@@ -73,6 +73,12 @@ function CreateFile(tableName,rows)
     {
         let name=rows[i].column_name;
         let des=rows[i].column_comment;
+        content+=`    ${name};\n`
+    }
+    /*for (let i=0,count=rows.length;i<count;i++)
+    {
+        let name=rows[i].column_name;
+        let des=rows[i].column_comment;
         content+=`    #_${name};\n`
     }
     for (let i=0,count=rows.length;i<count;i++)
@@ -85,7 +91,7 @@ function CreateFile(tableName,rows)
         content+=`    set ${name}(val){
        this.#_${name}=val;
     }\n`
-    }
+    }*/
     content+='}\n'
     content+=`module.exports=${className};`
     console.log(content);

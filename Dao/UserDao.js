@@ -20,8 +20,8 @@ function QueryByUid(uid) {
 function InsertUser(userInfo)
 {
     return new Promise((resolve, reject) =>{
-        db.insert("insert into users (account,pwd,name,time,icon) values(?,?,?,?,?)",
-            [userInfo.account,userInfo.pwd,userInfo.name,userInfo.time,userInfo.icon],
+        db.insert("users",
+            userInfo,
             (err,data)=>{
             if(err) reject(err);
             else resolve(data.insertId);
