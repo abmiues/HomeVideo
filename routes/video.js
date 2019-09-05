@@ -21,9 +21,9 @@ router.get('/',function (req,res,next) {
     res.render('PlayVideo')
 })
 router.get('/bangumi',function (req,rsp,next) {
-    rsp.render('PlayBangumi');
+    rsp.redirect('/video/bangumi/1');
 })
 router.get('/bangumi/:id',function (req,rsp,next) {
-    //rsp.render('PlayBangumi');
+    rsp.render('PlayBangumi',{id:req.params['id']});
 })
 module.exports=router;

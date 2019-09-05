@@ -3,12 +3,16 @@ const globalDao=require('../Dao/GlobalDao');
 function Login(account,pwd,callback) {
     userDao.QueryByAccount(account)
         .then((result)=>{
-            if(result.pwd==pwd)
-                callback(null,result.uid);
+            if(result){
+                if(result.pwd==pwd)
+                    callback(null,result.uid);
+                else
+                    callback('账号或密码错误');
+            }
             else
-                callback('账号或密码错误');
+                callback('账号不存在');
             })
-        .catch(err=>{callback("服务器错误");});
+        .catch(err=>{callback(err);});
 }
 function Register(oneuUser,callback)
 {

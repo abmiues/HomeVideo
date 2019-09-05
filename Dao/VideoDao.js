@@ -1,7 +1,7 @@
 const db=require('../Util/db')
 function InsertVideo(videoModel) {
     return new Promise((resolve ,reject)=> {
-        db.insert('video',videoModel,
+        db.QuickInsert('video',videoModel,
             (err,result)=>{
             if(err) reject(err);
             else resolve(result.insertId);

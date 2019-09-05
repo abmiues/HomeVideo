@@ -35,8 +35,9 @@ let sliderWidth=videoItem.length*128-sliderShowWidth;
 let url="";
 Init();
 function Init() {
-    currentVideoIndex=0;
+    currentVideoIndex=$('#videoId').html();
     url=window.location.pathname;
+    url=url.substring(0,url.lastIndexOf('/'));
     onListItemClick(currentVideoIndex);
     let parent=simpleList[0];
     let count=simpleList[0].childElementCount;

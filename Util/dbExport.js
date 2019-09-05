@@ -73,6 +73,9 @@ function CreateFile(tableName,rows)
     {
         let name=rows[i].column_name;
         let des=rows[i].column_comment;
+        content+=`    /**
+    * ${des}
+    */\n`
         content+=`    ${name};\n`
     }
     /*for (let i=0,count=rows.length;i<count;i++)

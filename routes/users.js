@@ -1,28 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const userManage=require('../Services/UserManage');
+const userServices=require('../Services/UserServices');
 const UsersModel=require('../model/UsersModel');
 router.post('/Login',function (req,res,next) {
     let account=req.body.account;
     let pwd=req.body.pwd;
-    let keepLogin=req.body.keepLogin;
-    userManage.Login(account,pwd,(err,data)=>{
+    //let keepLogin=req.body.keepLogin;
+    userServices.Login(account,pwd,(err,data)=>{
         if(err)
         {
-            // res.json({r:err});
             req.session.destroy(err=>{
                 console.log("session destroy succeed account:"+account);
             });
-            res.render('Login',{err:1});
+            res.render('Login',{err:err});
         }
         else
         {
-            if(keepLogin)
-            {
-                console.log(keepLogin);
-                req.session.account=account;
-                req.session.uid=data;
-            }
+            req.session.account=account;
+            req.session.uid=data;
             res.redirect('/');
         }
     })
@@ -54,7 +49,7 @@ router.post('/register',function (req,res,next) {
     usersModel.account=req.body.account;
     usersModel.pwd=req.body.pwd;
     usersModel.name=req.body.name;
-    userManage.Register(usersModel,(err,data)=>{
+    userServices.Register(usersModel,(err,data)=>{
       if(err)
         res.render('register',{err:err});
       else{

@@ -20,7 +20,7 @@ function QueryByUid(uid) {
 function InsertUser(userInfo)
 {
     return new Promise((resolve, reject) =>{
-        db.insert("users",
+        db.QuickInsert("users",
             userInfo,
             (err,data)=>{
             if(err) reject(err);
