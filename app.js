@@ -34,9 +34,11 @@ app.use(session({
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const videoRouter=require('./routes/video');
+const bangumiRouter=require('./routes/bangumi');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/video', videoRouter);
+app.use('/bangumi',bangumiRouter);
 //---------此处添加路由---------//
 
 /*//实现post请求的数据打印
@@ -47,6 +49,7 @@ app.use(bodyParser.urlencoded({extended:false}));//解析post请求
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    console.log(req.url);
   next(createError(404));
 });
 

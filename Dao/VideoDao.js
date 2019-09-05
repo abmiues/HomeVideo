@@ -4,7 +4,7 @@ function InsertVideo(videoModel) {
         db.QuickInsert('video',videoModel,
             (err,result)=>{
             if(err) reject(err);
-            else resolve(result.insertId);
+            else resolve(result);
             })
     });
 }

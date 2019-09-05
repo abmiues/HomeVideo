@@ -1,5 +1,7 @@
 const express=require('express');
 const router = express.Router();
+const VideoModel=require('../model/VideoModel');
+const videoServices=require('../Services/VideoServices');
 const fs=require('fs');
 /*router.post('/videos',function (req,res,next) {
     let videoId=req.body.id;
@@ -20,10 +22,34 @@ const fs=require('fs');
 router.get('/',function (req,res,next) {
     res.render('PlayVideo')
 })
-router.get('/bangumi',function (req,rsp,next) {
-    rsp.redirect('/video/bangumi/1');
+router.get('/addvideo',function (req,res,next) {
+   // if(req.session.uid)
+        res.render('AddVideo',{msg:null});
+   // else
+     //   res.redirect('/users/Login');
 })
-router.get('/bangumi/:id',function (req,rsp,next) {
-    rsp.render('PlayBangumi',{id:req.params['id']});
+router.post('/addvideo',function (req,res,next) {
+   // if(req.session.uid)
+  //  {
+        let videoModel=new VideoModel();
+        videoModel.name=req.body.title;
+        videoModel.uid=0;//req.session.uid;
+        videoModel.addtime=videoServices.GetTime();
+        videoModel.cover=req.body.cover;
+        videoModel.des=req.body.des;
+        videoModel.path=req.body.path;
+        //videoModel.belong=req.body.belong;
+        //videoModel.part=req.body.part;
+        videoServices.addVideo(videoModel,(err,result)=>{
+            if(result)
+                res.render('AddVideo',{msg:"添加成功"});
+            else
+                res.render('AddVideo',{msg:err});
+        });
+
+   // }
+  //  else
+   //     res.redirect('/users/Login');
+
 })
 module.exports=router;

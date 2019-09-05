@@ -28,7 +28,7 @@ router.get('/Login',function (req,res,next) {
     if(req.session.uid)
         res.redirect('/');
     else
-        res.render('Login',{err:0});
+        res.render('Login',{err:null});
 })
 router.get('/register',function (req,res,next) {
     res.render('register',{err:null});
@@ -36,15 +36,8 @@ router.get('/register',function (req,res,next) {
 
 
 router.post('/register',function (req,res,next) {
-
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth()+1;
-    var day = date.getDate();
-    var hour = date.getHours();
-    var minute = date.getMinutes();
     let usersModel=new UsersModel;
-    usersModel.time=year+"-"+month+"-"+day+" "+hour+":"+minute;
+    usersModel.time=userServices.GetTime();
     usersModel.icon="";
     usersModel.account=req.body.account;
     usersModel.pwd=req.body.pwd;

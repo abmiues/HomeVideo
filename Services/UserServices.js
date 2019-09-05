@@ -28,3 +28,4 @@ function Register(oneuUser,callback)
 }
 exports.Login=Login;
 exports.Register=Register;
+exports.GetTime=globalDao.GetFormateTime;

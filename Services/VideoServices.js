@@ -7,3 +7,5 @@ function addVideo(videmodel,callback) {
         callback(err);
     })
 }
+exports.addVideo=addVideo;
+exports.GetTime=globalDao.GetFormateTime;

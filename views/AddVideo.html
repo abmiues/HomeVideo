@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/md5.js"></script>
+    <% include head.html %>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div style="text-align: center">
+            <% if(msg){ %>
+            <h4><%=msg%></h4>
+            <% }%>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+            <form action="addvideo" method="post">
+                <div class="form-group">
+                    <label for="title">标 题</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="标 题">
+                </div>
+                <div class="form-group">
+                    <label for="des">简 介</label>
+                    <input type="text" class="form-control" id="des" name="des" placeholder="简 介">
+                </div>
+                <div class="form-group">
+                    <label for="path">路 径</label>
+                    <input type="text" class="form-control" id="path" name="path" placeholder="路 径">
+                </div>
+                <div class="form-group">
+                    <label for="cover">封面路径</label>
+                    <input type="text" class="form-control" id="cover" name="cover" placeholder="封面路径">
+                </div>
+                <!--<div class="form-group">
+                    <label for="belong">归 档</label>
+                    <input type="text" class="form-control" id="belong",name="belong" placeholder="归档合集">
+                </div>
+                <div class="form-group">
+                    <label for="part">归档序号</label>
+                    <input type="text" class="form-control" id="part",name="part" placeholder="归档序号">
+                </div>-->
+                <button type="submit" class="btn btn-default" >确定</button>
+            </form>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+</div>
+<script>
+</script>
+</body>
+</html>
