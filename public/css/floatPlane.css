@@ -1,0 +1,29 @@
+.float_plane{
+    display: none;
+}
+.float_planeShow{
+    display:block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 600px;
+    height:200px;
+    margin-left: -300px;
+    margin-top: 100px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 4px #A0A0A0, -2px -2px 4px #A0A0A0;
+}
+.float_planeShow div{
+     margin: 30px 20px 10px 20px;
+ }
+.float_planeShow button{
+    margin: 10px 20px;
+}
+.float_planeBg{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    top: 0;
+    left: 0;
+}

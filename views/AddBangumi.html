@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/md5.js"></script>
+    <% include head.html %>
+    <link rel="stylesheet" href="/css/floatPlane.css"/>
+</head>
+<body>
+<div class="main-content">
+    <div class="row">
+        <div style="text-align: center">
+            <% if(msg){ %>
+            <h4><%=msg%></h4>
+            <% }%>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+            <form action="addbangumi" method="post">
+                <div class="form-group">
+                    <label for="title">标 题</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="标 题">
+                </div>
+                <div class="form-group">
+                    <label for="des">简 介</label>
+                    <input type="text" class="form-control" id="des" name="des" placeholder="简 介">
+                </div>
+                <div class="form-group">
+                    <label for="time">开播时间</label>
+                    <input type="text" class="form-control" id="time" name="time" placeholder="开播时间">
+                </div>
+                <div class="form-group">
+                    <label for="cover">封面路径</label>
+                    <input type="text" class="form-control" id="cover" name="cover" placeholder="封面路径">
+                </div>
+                <div class="form-group">
+                    <label for="group">归属系列</label>
+                    <input type="number" class="form-control" id="group",name="group" placeholder="归属系列">
+                </div>
+                <div class="form-group">
+                    <label for="part">系列第几季</label>
+                    <input type="number" class="form-control" id="part",name="part" placeholder="系列第几季">
+                </div>
+                <button type="submit" class="btn btn-default" >确定</button>
+            </form>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div id="bangumiGroup" class="float_planeBg">
+        <div class="float_planeShow">
+            <div>
+                 <div class="form-group">
+                        <label for="groupTitle">番剧名称</label>
+                        <input type="text" class="form-control" name="groupTitle" id="groupTitle" placeholder="番剧名称">
+                    </div>
+                   <!-- <div class="form-group" hidden>
+                        <label>标 题</label>
+                        <input type="text" class="form-control" name="title" placeholder="标 题">
+                    </div>
+                    <div class="form-group" hidden>
+                        <label>简 介</label>
+                        <input type="text" class="form-control" name="des" placeholder="简 介">
+                    </div>
+                    <div class="form-group" hidden>
+                        <label>开播时间</label>
+                        <input type="text" class="form-control"  name="time" placeholder="开播时间">
+                    </div>
+                    <div class="form-group" hidden>
+                        <label>封面路径</label>
+                        <input type="text" class="form-control" name="cover" placeholder="封面路径">
+                    </div>
+                    <div class="form-group" hidden>
+                        <label>归属系列</label>
+                        <input type="number" class="form-control",name="group" placeholder="归属系列">
+                    </div>
+                    <div class="form-group" hidden>
+                        <label>系列第几季</label>
+                        <input type="number" class="form-control",name="part" placeholder="系列第几季">
+                    </div>-->
+                  <button  class="btn btn-default" onclick=addNewBangumiGroup()>确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addNewBangumiGroup() {
+
+
+        var title=$('#title').val();
+        var des=$('#des').val();
+        var time=$('#time').val();
+        var cover=$('#cover').val();
+        var group=$('#group').val();
+        var part=$('#part').val();
+        var groupTitle=$('#groupTitle').val();
+        var data={title:title,des:des,time:time,cover:cover,group:group,part:part,groupTitle:groupTitle};
+        var form = $("<form>"); //定义一个form表单  
+        form.attr("style", "display:none");
+        form.attr("method", "post");
+        form.attr("action", "addbangumigroup");
+        for(var key in data) {
+            var input1 = $("<input>");
+            input1.attr("type", "hidden");
+            input1.attr("name", key);
+            input1.attr("value", data[key]);
+            form.append(input1);
+        }
+        $("body").append(form); //将表单放置在web中  
+        form.submit(); //表单提交()
+
+       /* $.post('addbangumigroup',data, function(data){
+            console.log(data);
+        }, 'json')*/
+    }
+</script>
+</body>
+</html>

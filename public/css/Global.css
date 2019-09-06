@@ -25,3 +25,9 @@ ul{
 li {
     list-style: none;
 }
+.main-content{
+    width: 1200px;
+    display: table;
+    margin: 10px auto 0 auto;
+    position: relative;
+}

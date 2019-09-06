@@ -1,10 +1,4 @@
 /*播放页面的css*/
-.main-content{
-    width: 1200px;
-    display: table;
-    margin: 10px auto 0 auto;
-    position: relative;
-}
 .title-info
 {
     padding-left: 20px;
