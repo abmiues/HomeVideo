@@ -25,9 +25,14 @@ router.get('/play',function (req,rsp,next) {
 router.get('/play/:id',function (req,rsp,next) {
     rsp.render('PlayBangumi',{id:req.params['id']});
 })
-var bangumiGroup=null;
+router.post('/getbangumigroup',function (req,rsp,next) {
+    bangumiServices.GetBangumiGroup((err,result)=>{
+        if(err) rsp.json({err:err});
+        else rsp.json({err:null,result:result});
+    })
+})
 router.get('/addbangumi',function (req,rsp,next) {
-  rsp.render('AddBangumi',{msg:null,data:null,bangumiGroup:bangumiGroup});
+  rsp.render('AddBangumi',{msg:null,data:null});
 })
 router.post('/addbangumi',function (req,rsp,next) {
     let bangumiModel=new BangumiModel();
@@ -41,7 +46,7 @@ router.post('/addbangumi',function (req,rsp,next) {
         if(result)
             rsp.render('AddBangumi',{msg:"添加成功"});
         else
-            rsp.render('AddBangumi',{msg:err,data:null,bangumiGroup:bangumiGroup});
+            rsp.render('AddBangumi',{msg:err,data:null});
     })
 })
 router.post('/addbangumigroup',function (req,rsp,next) {
@@ -50,12 +55,8 @@ router.post('/addbangumigroup',function (req,rsp,next) {
     bangumiModel.cover=req.body.cover;
     bangumiModel.des=req.body.des;
     bangumiModel.time=req.body.time;
-    bangumiGroup=new BangumiGroupModel();
-    bangumiGroup.name=req.body.groupTitle;
     console.log(bangumiModel)
-    console.log(bangumiGroup)
-   // rsp.render('AddBangumi',{msg:null,data:null,bangumiGroup:bangumiGroup});
+   // rsp.render('AddBangumi',{msg:null,data:null});
     rsp.redirect('addbangumi');
-    bangumiGroup=null;
 })
 module.exports=router;
