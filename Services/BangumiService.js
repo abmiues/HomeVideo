@@ -13,6 +13,13 @@ function GetBangumiGroup(callback)
         .then(result=>callback(null,result))
         .catch(err=>callback(err));
 }
+function AddBangumiGroup(bangumiGroup,callback)
+{
+    bangumiDao.InsertBangumiGroup(bangumiGroup)
+        .then(result=>callback(null,result))
+        .catch(err=>callback(err));
+}
 exports.AddBangumi=AddBangumi;
 exports.GetBangumiGroup=GetBangumiGroup;
+exports.AddBangumiGroup=AddBangumiGroup;
 exports.GetTime=globalDao.GetFormateTime;

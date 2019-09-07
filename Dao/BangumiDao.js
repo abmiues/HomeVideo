@@ -17,5 +17,15 @@ function GetBangumiGroup()
         })
     })
 }
+function InsertBangumiGroup(bangumiGroup) {
+    return new Promise((resolve ,reject)=> {
+        db.QuickInsert('bangumi_group',bangumiGroup,
+            (err,result)=>{
+                if(err) reject(err);
+                else resolve(result);
+            })
+    });
+}
 exports.InsertBangumi=InsertBangumi;
 exports.GetBangumiGroup=GetBangumiGroup;
+exports.InsertBangumiGroup=InsertBangumiGroup;

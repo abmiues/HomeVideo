@@ -11,13 +11,10 @@
 <div class="main-content">
     <div class="row">
         <div style="text-align: center">
-            <% if(msg){ %>
-            <h4><%=msg%></h4>
-            <% }%>
+            <h4 id="textTip"></h4>
         </div>
     </div>
-    <div class="row">
-        <form action="addbangumi" method="post">
+        <form >
             <div class="form-group">
                 <label for="title">标 题</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="标 题">
@@ -36,7 +33,8 @@
             </div>
             <div class="form-group">
                 <label for="group">归属系列</label>
-                <input type="text" class="form-control" id="group",name="group" placeholder="归属系列">
+                <input type="text" class="form-control" id="group",name="group" placeholder="归属系列" autocomplete="off";>
+                <button type="button" class="btn btn-default" onclick=ShowAddPanel()>添加新系列</button>
                 <ul class="bangumiGroupList">
                 </ul>
             </div>
@@ -44,101 +42,111 @@
                 <label for="part">系列第几季</label>
                 <input type="number" class="form-control" id="part",name="part" placeholder="系列第几季">
             </div>
-            <button type="submit" class="btn btn-default" >确定</button>
+            <button type="button" class="btn btn-default" onclick=addBangumi()>确定</button>
         </form>
-    </div>
 
 </div>
 
-<div id="bangumiGroup" class="float_planeBg">
+<div id="addPanel" class="float_planeBg" >
     <div class="float_planeShow">
-        <div class="form-group">
+        <div >
             <label for="groupTitle">番剧名称</label>
             <input type="text" class="form-control" name="groupTitle" id="groupTitle" placeholder="番剧名称">
         </div>
-        <button  class="btn btn-default" onclick=addNewBangumiGroup()>确定</button>
+        <div>
+            <button  class="btn btn-default" onclick=addBangumiGroup()>确定</button>
+            <button  class="btn btn-default" onclick=HideAddPanel()>取消</button>
+        </div>
     </div>
 </div>
 
 </div>
 
 <script>
-
-
-    var inputGroup=$('#group')[0];
-    var groupListParent=$('.bangumiGroupList')[0];
-    var hasFocus=false;
-    var lastSelectUI;
-    SetList();
-    groupListParent.onmouseenter=()=>{
-        hasFocus=true;
+    function ShowAddPanel() {
+        $('.float_planeBg').css('display','block');
     }
-    groupListParent.onmouseleave=()=>{
-        hasFocus=false;
+    function HideAddPanel() {
+        $('.float_planeBg').css('display','none');
     }
-
-    inputGroup.onfocus=()=>{
-        groupListParent.style.display='block';
-    };
-    inputGroup.onblur=()=>{
-        if(hasFocus)
-            return;
-        groupListParent.style.display='none';
-    }
-    function SetList() {
-
-        var data=[{name:"未设置" ,index:0},{name:"分组1" ,index:1},{name:"分组1" ,index:4}]
+    function SetList(data) {
+        groupUIList=[];
+        bangumiGroupData={name:"无",id:0};
+        OnItemClick( AddOneGroupUI(bangumiGroupData),bangumiGroupData)
         for(let i=0,count=data.length;i<count;i++)
         {
-            let li = document.createElement("li");
-            li.innerHTML=data[i].name;
-            li.onclick=function (e){OnItemClick(li,data[i].index);}
-
-            groupListParent.append(li);
+            AddOneGroupUI(data[i])
         }
-       /* var li = $("<li>")[0];
-        li.innerHTML=data[i].name;
-        parent.append(li);*/
     }
-    function OnItemClick(ui,index) {
-        console.log(index)
+    function AddOneGroupUI(data) {
+        let li = document.createElement("li");
+        li.innerHTML=data.name;
+        li.onclick=function (e){OnItemClick(li,data);}
+        groupListParent.append(li);
+        groupUIList.push(li);
+        return li;
+    }
+    function OnItemClick(ui,data) {
+        bangumiGroupData=data;
+        inputGroup.value=data.name
         groupListParent.style.display='none';
         if(lastSelectUI)
             lastSelectUI.setAttribute('class','');
         ui.setAttribute('class','on')
         lastSelectUI=ui;
     }
-
-    //$('#group').oninput
-    function addNewBangumiGroup() {
-
-
-        var title=$('#title').val();
-        var des=$('#des').val();
-        var time=$('#time').val();
-        var cover=$('#cover').val();
-        var group=$('#group').val();
-        var part=$('#part').val();
-        var groupTitle=$('#groupTitle').val();
-        var data={title:title,des:des,time:time,cover:cover,group:group,part:part,groupTitle:groupTitle};
-        var form = $("<form>"); //定义一个form表单  
-        form.attr("style", "display:none");
-        form.attr("method", "post");
-        form.attr("action", "addbangumigroup");
-        for(var key in data) {
-            var input1 = $("<input>");
-            input1.attr("type", "hidden");
-            input1.attr("name", key);
-            input1.attr("value", data[key]);
-            form.append(input1);
-        }
-        $("body").append(form); //将表单放置在web中  
-        form.submit(); //表单提交()
-
-        /* $.post('addbangumigroup',data, function(data){
-             console.log(data);
-         }, 'json')*/
+    //添加一个新的合集，并自动选择
+    function addBangumiGroup() {
+        var title=$('#groupTitle').val();
+        $.ajax({
+            type:"post",//type可以为post也可以为get
+            url:"addbangumigroup",
+            data:{title:title},//这行不能省略，如果没有数据向后台提交也要写成data:{}的形式
+            dataType:"json",//这里要注意如果后台返回的数据不是json格式，那么就会进入到error:function(data){}中
+            success:function(data){
+                if(data.err) alert(data.err);
+                else
+                {
+                    HideAddPanel();
+                   let ui= AddOneGroupUI({name:title,id:data.result});
+                   OnItemClick(ui,{name:title,id:data.result});
+                }
+            },
+            error:function(data){
+                $('#textTip')[0].innerHTML="添加番剧合集列表错误"
+            }
+        });
     }
+    function addBangumi() {
+        let title=$('#title').val();
+        let des=$('#des').val();
+        let time=$('#time').val();
+        let cover=$('#cover').val();
+        let part=$('#part').val();
+        let data={title:title,des:des,time:time,cover:cover,group:bangumiGroupData.id,part:part};
+        $.ajax({
+            type:"post",//type可以为post也可以为get
+            url:"addbangumi",
+            data:data,
+            dataType:"json",//这里要注意如果后台返回的数据不是json格式，那么就会进入到error:function(data){}中
+            success:function(data){
+                if(data.err) $('#textTip')[0].innerHTML=data.err;
+                else
+                {
+                    $('#title')[0].value="";
+                    $('#des')[0].value="";
+                    $('#time')[0].value="";
+                    $('#cover')[0].value="";
+                    $('#part')[0].value="";
+                    $('#textTip')[0].innerHTML="添加成功"
+                }
+            },
+            error:function(data){
+                $('#textTip')[0].innerHTML="添加失败"
+            }
+        });
+    }
+    //ajax获取合集数据，并设置合集列表
     function GetBangumiGroup() {
         $.ajax({
             type:"post",//type可以为post也可以为get
@@ -149,13 +157,70 @@
                 if(data.err) alert(data.err);
                 else
                 {
+                    SetList(data.result);
                 }
             },
             error:function(data){
-                alert("获取番剧合集列表错误");
+                $('#textTip')[0].innerHTML="番剧合集列表获取失败"
             }
         });
     }
+    function SearchGroup() {
+        if(!flag)
+        {
+            let textValue=inputGroup.value;
+            for (let i=0,count=groupUIList.length;i<count;i++)
+            {
+                if(groupUIList[i].innerHTML.search(textValue)!=-1)
+                    groupUIList[i].style.display="block";
+                else
+                    groupUIList[i].style.display="none";
+            }
+        }
+
+    }
+    //是否有输入法的标识
+    var flag = false;
+    /*输入法输入结束后触发，无输入法时不支持*/
+    function OnInput() {
+        $('#group').delegate('#sclt-div input', 'input', function () {})
+            .on('compositionstart', function () {flag = true;})
+            .on('compositionend', function () {
+                flag = false;
+                SearchGroup();//在input之后执行 所以需要手动调用一次
+                });
+    }
+
+    var inputGroup=$('#group')[0];
+    var groupListParent=$('.bangumiGroupList')[0];
+    var hasFocus=false;
+    var lastSelectUI;
+    var groupUIList;
+    var bangumiGroupData;
+    // SetList();
+    groupListParent.onmouseenter=()=>{
+        hasFocus=true;
+    }
+    groupListParent.onmouseleave=()=>{
+        hasFocus=false;
+    }
+
+    inputGroup.onfocus=()=>{
+        groupListParent.style.display='block';
+        for (let i=0,count=groupUIList.length;i<count;i++)
+           groupUIList[i].style.display="block";
+        inputGroup.value="";
+        inputGroup.placeholder='当前选择：'+bangumiGroupData.name;
+    };
+    inputGroup.onblur=()=>{
+        if(hasFocus)
+            return;
+        groupListParent.style.display='none';
+        inputGroup.value=bangumiGroupData.name;
+    }
+    inputGroup.oninput=SearchGroup;
+    GetBangumiGroup();
+    OnInput();
 </script>
 </body>
 </html>

@@ -23,8 +23,9 @@ function Insert(sql,params,callback) {
     pool.getConnection(function (err,connection) {
         connection.query(sql,params,
             (err,results)=> {
-                callback(err,results.insertId);
-                connection.release();
+            if(err) callback(err);
+            else callback(null,results.insertId);
+            connection.release();
             });
     });
 }
@@ -37,7 +38,10 @@ function Update(sql,params,callback) {
     pool.getConnection(function (err,connection) {
         connection.query(sql,params,
             (err,results,fields)=> {
-                callback(err,results.affectedRows);
+            if(err)
+                callback(err);
+            else
+                callback(null,results.affectedRows);
                 connection.release();
             });
     });
@@ -51,7 +55,7 @@ function GetCloumnsAndValues(data) {
         if(data[i]!=null)
         {
             params+="?,"
-            cloumns+=`${i},`
+            cloumns+=`\`${i}\`,`
             values.push(data[i]);
         }
     }
@@ -67,7 +71,7 @@ function GetCloumnsAndValuesForUpdate(data,keys) {
     {
         if(data[i]!=null&&!keys.includes(i))
         {
-            cloumns+=`${i}=?,`
+            cloumns+=`\`${i}\`=?,`
             values.push(data[i]);
         }
     }
