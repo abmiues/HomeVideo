@@ -14,7 +14,8 @@
             <h4 id="textTip"></h4>
         </div>
     </div>
-        <form >
+    <% include UpLoadImg.html %>
+    <form >
             <div class="form-group">
                 <label for="title">标 题</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="标 题">
@@ -47,6 +48,7 @@
 
 </div>
 
+<!--添加新合集的面板-->
 <div id="addPanel" class="float_planeBg" >
     <div class="float_planeShow">
         <div >
@@ -146,6 +148,7 @@
             }
         });
     }
+
     //ajax获取合集数据，并设置合集列表
     function GetBangumiGroup() {
         $.ajax({
