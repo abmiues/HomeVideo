@@ -1,4 +1,5 @@
 const express = require('express');
+const progress=require('progress-stream');
 const multer = require('multer');
 const router = express.Router();
 const UPLOAD_FOLDER='./public/cover';
@@ -11,7 +12,6 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now())
     }*/
 })
-//const upload = multer({ dest: UPLOAD_TMP_FOLDER })
 const upload = multer({ storage: storage });
 /* GET home page. */
 
@@ -33,10 +33,20 @@ router.get('/des', function(req, res, next) {
 router.get('/search',function (req,rsp,next) {
     rsp.render('searchResult')
 })
-router.post('/upcover',upload.single('cover'),function (req,rsp,next) {
-    let file=req.file;
-    let body=req.body;
-    rsp.json({data:body.name})
-
+var i=0;
+router.post('/upcover',function (req,rsp,next) {
+    let p = progress({time:1000,length:req.headers['content-length']})//1秒刷新一次，从请求头中获取长度
+    let upload1 = upload.single('cover')//定义单文件，接收到后以cover存储
+    req.pipe(p)
+    p.headers = req.headers
+    p.on('progress', function (progress) {
+        console.log(progress.percentage);
+    })
+    upload1(p, rsp, function () {
+        console.log("finish");
+        let file=p.file;
+        let body=p.body;
+        rsp.json({data:body.name})
+    })
 })
 module.exports = router;
