@@ -16,38 +16,72 @@
     height: 220px;"/>
     <label id="path" hidden></label>
 </div>
+<script src="/js/spark-md5.min.js"></script>
 <script>
+
     let fileInput=$('#fileToUpload');
     fileInput.change(function(event) {
         if (fileInput.val().length) {
             let fileName = fileInput.val();
             let extension = fileName.substring(fileName.lastIndexOf('.'), fileName.length).toLowerCase();
-          /*  if(fileInput[0].files[0].size>2*1024*1024)
+           /* if(fileInput[0].files[0].size>2*1024*1024)
             {
                 alert('文件大小不能大于2M')
+                return;
+            }
+            if (extension != ".jpg" && extension != ".png"&&extension != ".jpeg") {
+                alert("仅支持.jpg、.png文件")
+                return;
             }*/
-            //if (extension == ".jpg" || extension == ".png"||extension == ".jpeg") {
-                let data = new FormData();
-                let file=fileInput[0].files[0];
-                data.append('cover', file);
-                data.append('name',file.name);
-                $.ajax({
-                    url: '/upcover',
-                    type: 'POST',
-                    data: data,
-                    cache: false,
-                    contentType: false, //不可缺参数
-                    processData: false, //不可缺参数
-                    success: function(data) {
-                        console.log(data);
-                    },
-                    error: function() {
-                        console.log('error');
-                    }
-                });
-           // }
-          //  else
-             //   alert("仅支持.jpg、.png文件")
+            let blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+
+
+            let data = new FormData();
+            let file=fileInput[0].files[0];
+            let chunkSize=2097152;
+            let chunks = Math.ceil(file.size / chunkSize);
+            let currentChunk=0;
+            let spark=new SparkMD5.ArrayBuffer();
+            function frOnload(e) {
+                spark.append(e.target.result);
+                currentChunk++;
+                if (currentChunk < chunks)
+                    loadNext();
+                else {
+                    console.log("\n加载结束,开始上传\n");
+                    data.append('name', file.name);
+                    data.append('size',file.size);
+                    data.append('md5',spark.end());
+                    data.append('ext',extension);
+                    data.append('cover', file);
+                    $.ajax({
+                        url: '/upcover',
+                        type: 'POST',
+                        data: data,
+                        cache: false,
+                        contentType: false, //不可缺参数
+                        processData: false, //不可缺参数
+                        success: function (data) {
+                            console.log(data);
+                        },
+                        error: function () {
+                            console.log('error');
+                        }
+                    });
+                }
+            };
+            function frOnerror() {
+                console.log('文件读取错误');
+            };
+            function loadNext() {
+                var fileReader = new FileReader();
+                fileReader.onload = frOnload;
+                fileReader.onerror = frOnerror;
+                var start = currentChunk * chunkSize,
+                    end = ((start + chunkSize) >= file.size) ? file.size : start + chunkSize;
+                fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+            };
+            loadNext();
         }
     });
 </script>
